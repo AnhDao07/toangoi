@@ -1,1 +1,48 @@
 
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Khang — Bí mật</title>
+  <style>
+    body{font-family:system-ui; background:#0b0b0b; color:#eee; padding:24px;}
+    .card{max-width:760px;margin:20px auto;background:#111;padding:18px;border-radius:8px;}
+    button{padding:8px 12px;border-radius:6px;border:0;cursor:pointer;}
+    pre{white-space:pre-wrap;background:#070707;padding:12px;border-radius:6px;display:none;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Khang (Thông tin công khai)</h1>
+    <p>...</p>
+
+    <p><strong>Bấm để mở phần bí mật (yêu cầu mật khẩu)</strong></p>
+    <button id="openBtn">Mở bí mật</button>
+    <pre id="secret"></pre>
+  </div>
+
+<script>
+  // ==== THAY PASSWORD VÀ NỘI DUNG CHO MỖI NHÂN VẬT ====
+  const PASSWORD = "Khang-9812";     // Đổi mật khẩu riêng cho Khang
+  const SECRET_TEXT = `BÍ MẬT Khang:
+- Là hung thủ. Động cơ: ghen.
+- Kịch bản: dụ nhóm vô công viên, hành động, dàn dựng hiện trường.
+- Hãy che dấu dấu vết, bẻ hướng nghi ngờ vào My.
+Hướng dẫn hành xử: giữ bình tĩnh, ăn nói nhẹ nhàng, cố tỏ ra sốc.`;
+  // ===============================================
+
+  document.getElementById('openBtn').addEventListener('click', () => {
+    const p = prompt("Nhập mật khẩu để mở bí mật:");
+    if(p === PASSWORD){
+      const box = document.getElementById('secret');
+      box.style.display = "block";
+      box.textContent = SECRET_TEXT;
+      document.getElementById('openBtn').disabled = true;
+      document.getElementById('openBtn').textContent = "Đã mở bí mật";
+    } else {
+      alert("Mật khẩu sai.");
+    }
+  });
+</script>
+</body>
+</html>
